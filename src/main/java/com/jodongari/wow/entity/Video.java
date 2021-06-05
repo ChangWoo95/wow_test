@@ -50,7 +50,6 @@ public class Video extends BaseDateTime {
     private List<Comment> comments = new ArrayList<>();
 
     @Builder
-
     public Video(LocalDateTime createdDateTime, LocalDateTime updatedDatetime, Long id, String title, String fileName, String savedFileName, Boolean deleteFlag, Long likeCount, Long disLikeCount, Long viewCount, Long videoSize, String totalPlayTime, List<Comment> comments) {
         super(createdDateTime, updatedDatetime);
         this.id = id;
