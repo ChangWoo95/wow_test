@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Entity
-public class Video extends BaseDateTime implements Serializable {
+public class Video extends BaseDateTime {
 
     @Id
     @Column

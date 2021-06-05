@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Getter
 @Entity
-public class Comment extends BaseDateTime implements Serializable {
+public class Comment extends BaseDateTime {
 
     @Id
     @Column

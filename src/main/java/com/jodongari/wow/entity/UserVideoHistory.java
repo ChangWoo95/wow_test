@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Getter
 @Entity
-public class UserVideoHistory extends BaseDateTime implements Serializable {
+public class UserVideoHistory extends BaseDateTime {
 
     @Id
     @Column

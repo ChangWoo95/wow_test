@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Entity
-public class User extends BaseDateTime implements Serializable {
+public class User extends BaseDateTime {
 
     @Id
     @Column
