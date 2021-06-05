@@ -1,9 +1,11 @@
 package com.jodongari.wow.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,4 +48,19 @@ public class User extends BaseDateTime {
     @OneToMany
     private List<Comment> comments = new ArrayList<>();
 
+    @Builder
+    public User(LocalDateTime createdDateTime, LocalDateTime updatedDatetime, Long id, String email, String password, String nickName, String gender, String birthday, String lasLoggedInIp, String thumbNailURL, List<Video> uploadVideos, List<UserVideoHistory> userVideoHistories, List<Comment> comments) {
+        super(createdDateTime, updatedDatetime);
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.nickName = nickName;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.lasLoggedInIp = lasLoggedInIp;
+        this.thumbNailURL = thumbNailURL;
+        this.uploadVideos = uploadVideos;
+        this.userVideoHistories = userVideoHistories;
+        this.comments = comments;
+    }
 }

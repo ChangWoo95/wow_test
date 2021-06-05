@@ -1,5 +1,6 @@
 package com.jodongari.wow.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -19,5 +20,11 @@ public class BaseDateTime {
 
     @LastModifiedDate
     private LocalDateTime updatedDatetime;
+
+    @Builder
+    public BaseDateTime(LocalDateTime createdDateTime, LocalDateTime updatedDatetime) {
+        this.createdDateTime = createdDateTime;
+        this.updatedDatetime = updatedDatetime;
+    }
 
 }
