@@ -3,13 +3,13 @@ package com.jodongari.wow.entity;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 
 @Getter
 @Entity
+@NoArgsConstructor
 public class UserVideoHistory extends BaseDateTime {
 
     @Id
@@ -32,8 +32,7 @@ public class UserVideoHistory extends BaseDateTime {
     private Boolean isDislike;
 
     @Builder
-    public UserVideoHistory(LocalDateTime createdDateTime, LocalDateTime updatedDatetime, Long id, User user, Video video, Boolean isLike, Boolean isDislike) {
-        super(createdDateTime, updatedDatetime);
+    public UserVideoHistory(Long id, User user, Video video, Boolean isLike, Boolean isDislike) {
         this.id = id;
         this.user = user;
         this.video = video;

@@ -2,14 +2,14 @@ package com.jodongari.wow.entity;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.experimental.SuperBuilder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 
 @Getter
+@NoArgsConstructor
 @Entity
+@Table
 public class Comment extends BaseDateTime {
 
     @Id
@@ -28,8 +28,7 @@ public class Comment extends BaseDateTime {
     private String comment;
 
     @Builder
-    public Comment(LocalDateTime createdDateTime, LocalDateTime updatedDatetime, Long id, User user, Video video, String comment) {
-        super(createdDateTime, updatedDatetime);
+    public Comment(Long id, User user, Video video, String comment) {
         this.id = id;
         this.user = user;
         this.video = video;

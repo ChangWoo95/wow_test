@@ -2,15 +2,15 @@ package com.jodongari.wow.entity;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Entity
+@NoArgsConstructor
 public class Video extends BaseDateTime {
 
     @Id
@@ -50,8 +50,7 @@ public class Video extends BaseDateTime {
     private List<Comment> comments = new ArrayList<>();
 
     @Builder
-    public Video(LocalDateTime createdDateTime, LocalDateTime updatedDatetime, Long id, String title, String fileName, String savedFileName, Boolean deleteFlag, Long likeCount, Long disLikeCount, Long viewCount, Long videoSize, String totalPlayTime, List<Comment> comments) {
-        super(createdDateTime, updatedDatetime);
+    public Video(Long id, String title, String fileName, String savedFileName, Boolean deleteFlag, Long likeCount, Long disLikeCount, Long viewCount, Long videoSize, String totalPlayTime, List<Comment> comments) {
         this.id = id;
         this.title = title;
         this.fileName = fileName;

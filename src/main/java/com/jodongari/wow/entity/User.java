@@ -2,15 +2,15 @@ package com.jodongari.wow.entity;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Entity
+@NoArgsConstructor
 public class User extends BaseDateTime {
 
     @Id
@@ -34,7 +34,7 @@ public class User extends BaseDateTime {
     private String birthday;
 
     @Column
-    private String lasLoggedInIp;
+    private String lastLoggedInIp;
 
     @Column
     private String thumbNailURL;
@@ -49,15 +49,14 @@ public class User extends BaseDateTime {
     private List<Comment> comments = new ArrayList<>();
 
     @Builder
-    public User(LocalDateTime createdDateTime, LocalDateTime updatedDatetime, Long id, String email, String password, String nickName, String gender, String birthday, String lasLoggedInIp, String thumbNailURL, List<Video> uploadVideos, List<UserVideoHistory> userVideoHistories, List<Comment> comments) {
-        super(createdDateTime, updatedDatetime);
+    public User(Long id, String email, String password, String nickName, String gender, String birthday, String lastLoggedInIp, String thumbNailURL, List<Video> uploadVideos, List<UserVideoHistory> userVideoHistories, List<Comment> comments) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.nickName = nickName;
         this.gender = gender;
         this.birthday = birthday;
-        this.lasLoggedInIp = lasLoggedInIp;
+        this.lastLoggedInIp = lastLoggedInIp;
         this.thumbNailURL = thumbNailURL;
         this.uploadVideos = uploadVideos;
         this.userVideoHistories = userVideoHistories;
