@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,30 +15,27 @@ import java.util.List;
 public class User extends BaseDateTime {
 
     @Id
-    @Column
+    @Column(name = "USER_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "USER_EMAIL", unique = true, nullable = false)
     private String email;
 
-    @Column
-    private String password;
-
-    @Column
+    @Column(name = "USER_NICKNAME", nullable = false)
     private String nickName;
 
-    @Column
+    @Column(name = "USER_GENDER", nullable = false, length = 1)
     private String gender;
 
-    @Column
-    private String birthday;
+    @Column(name = "USER_BIRTHDAY", nullable = false)
+    private Date birthday;
 
-    @Column
+    @Column(name = "USER_LAST_LOGGED_IN_IP", nullable = false)
     private String lastLoggedInIp;
 
-    @Column
-    private String thumbNailURL;
+    @Column(nullable = true)
+    private String userProfileImageURL;
 
     @OneToMany
     private List<Video> uploadVideos = new ArrayList<>();
@@ -49,15 +47,14 @@ public class User extends BaseDateTime {
     private List<Comment> comments = new ArrayList<>();
 
     @Builder
-    public User(Long id, String email, String password, String nickName, String gender, String birthday, String lastLoggedInIp, String thumbNailURL, List<Video> uploadVideos, List<UserVideoHistory> userVideoHistories, List<Comment> comments) {
+    public User(Long id, String email, String nickName, String gender, Date birthday, String lastLoggedInIp, String userProfileImageURL, List<Video> uploadVideos, List<UserVideoHistory> userVideoHistories, List<Comment> comments) {
         this.id = id;
         this.email = email;
-        this.password = password;
         this.nickName = nickName;
         this.gender = gender;
         this.birthday = birthday;
         this.lastLoggedInIp = lastLoggedInIp;
-        this.thumbNailURL = thumbNailURL;
+        this.userProfileImageURL = userProfileImageURL;
         this.uploadVideos = uploadVideos;
         this.userVideoHistories = userVideoHistories;
         this.comments = comments;

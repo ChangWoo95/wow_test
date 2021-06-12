@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Comment extends BaseDateTime {
 
     @Id
-    @Column
+    @Column(name = "COMMENT_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -25,6 +25,7 @@ public class Comment extends BaseDateTime {
     @JoinColumn
     private Video video;
 
+    @Column(name = "COMMENT", nullable = false)
     private String comment;
 
     @Builder

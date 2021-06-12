@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class UserVideoHistory extends BaseDateTime {
 
     @Id
-    @Column
+    @Column(name = "USER_VIDEO_HISTORY_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -25,10 +25,10 @@ public class UserVideoHistory extends BaseDateTime {
     @JoinColumn
     private Video video;
 
-    @Column
+    @Column(name = "IS_LIKE")
     private Boolean isLike;
 
-    @Column
+    @Column(name = "IS_DISLIKE")
     private Boolean isDislike;
 
     @Builder

@@ -3,6 +3,7 @@ package com.jodongari.wow.entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,43 +15,42 @@ import java.util.List;
 public class Video extends BaseDateTime {
 
     @Id
-    @Column
+    @Column(name = "VIDEO_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TODO max length set
-    @Column
+    @Column(name = "VIDEO_TITLE", nullable = false, length = 100)
     private String title;
 
-    @Column
+    @Column(name = "VIDEO_FILE_NAME", nullable = false)
     private String fileName;
 
-    @Column
+    @Column(name = "VIDEO_SAVED_FILE_NAME", nullable = false)
     private String savedFileName;
 
-    @Column
-    private Boolean deleteFlag;
+    @Column(name = "VIDEO_DELETE_FLAG", nullable = false)
+    private Boolean deleteFlag = false;
 
-    @Column
+    @Column(name = "VIDEO_LIKE_COUNT")
     private Long likeCount;
 
-    @Column
+    @Column(name = "VIDEO_DISLIKE_COUNT")
     private Long disLikeCount;
 
-    @Column
+    @Column(name = "VIDEO_VIEW_COUNT")
     private Long viewCount;
 
-    @Column
-    private Long videoSize;
+    @Column(name = "VIDEO_SIZE")
+    private Long size;
 
-    @Column
-    private String totalPlayTime;
+    @Column(name = "VIDEO_RUNNING_TIME")
+    private String runningTime;
 
     @OneToMany
     private List<Comment> comments = new ArrayList<>();
 
     @Builder
-    public Video(Long id, String title, String fileName, String savedFileName, Boolean deleteFlag, Long likeCount, Long disLikeCount, Long viewCount, Long videoSize, String totalPlayTime, List<Comment> comments) {
+    public Video(Long id, String title, String fileName, String savedFileName, Boolean deleteFlag, Long likeCount, Long disLikeCount, Long viewCount, Long size, String runningTime, List<Comment> comments) {
         this.id = id;
         this.title = title;
         this.fileName = fileName;
@@ -59,8 +59,8 @@ public class Video extends BaseDateTime {
         this.likeCount = likeCount;
         this.disLikeCount = disLikeCount;
         this.viewCount = viewCount;
-        this.videoSize = videoSize;
-        this.totalPlayTime = totalPlayTime;
+        this.size = size;
+        this.runningTime = runningTime;
         this.comments = comments;
     }
 

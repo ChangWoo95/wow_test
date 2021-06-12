@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.sql.Date;
 import java.util.List;
 
 @SpringBootTest
@@ -21,9 +22,10 @@ public class UserRepositoryTest {
         //given
         User user = User.builder()
                 .email("test@test.com")
-                .gender("male")
+                .gender("m")
                 .nickName("test")
-                .birthday("20210000")
+                .birthday(new Date(2021, 1, 1))
+                .lastLoggedInIp("testip")
                 .build();
 
         userRepository.save(user);
