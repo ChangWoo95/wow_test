@@ -39,16 +39,13 @@ public class User extends BaseDateTime {
     private String userProfileImageURL;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Video> uploadVideos = new ArrayList<>();
-
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
     private List<UserVideoHistory> userVideoHistories = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
     private List<Comment> comments = new ArrayList<>();
 
     @Builder
-    public User(Long id, String email, String nickName, String gender, Date birthday, String lastLoggedInIp, String userProfileImageURL, List<Video> uploadVideos, List<UserVideoHistory> userVideoHistories, List<Comment> comments) {
+    public User(Long id, String email, String nickName, String gender, Date birthday, String lastLoggedInIp, String userProfileImageURL, List<UserVideoHistory> userVideoHistories, List<Comment> comments) {
         this.id = id;
         this.email = email;
         this.nickName = nickName;
@@ -56,7 +53,6 @@ public class User extends BaseDateTime {
         this.birthday = birthday;
         this.lastLoggedInIp = lastLoggedInIp;
         this.userProfileImageURL = userProfileImageURL;
-        this.uploadVideos = uploadVideos;
         this.userVideoHistories = userVideoHistories;
         this.comments = comments;
     }
