@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import NavBar from '@/components/NavBar.vue'
 
 Vue.use(VueRouter);
 
@@ -9,9 +8,8 @@ const routes = [
     path: "/",
     name: "Home",
     components: {
-      NavBar,
-      default: () => import('../views/Home.vue')
-    }
+      default: () => import("../views/Home.vue"),
+    },
   },
 ];
 

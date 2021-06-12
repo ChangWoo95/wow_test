@@ -1,6 +1,6 @@
 <template>
   <nav id="navbar">
-    <v-app-bar class="white" flat app clipped-left >
+    <v-app-bar class="white" flat app clipped-left>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title class="font-weight-bold">
         <router-link to="/" class="black--text" style="text-decoration: none">
@@ -24,7 +24,7 @@
       </v-text-field>
 
       <v-spacer></v-spacer>
-      
+
       <v-menu offsetY>
         <template v-slot:activator="{ on: menu }">
           <v-tooltip bottom>
@@ -69,18 +69,13 @@
       <v-menu offset-y left>
         <template v-slot:activator="{ on }">
           <v-btn small color="red" depressed fab v-on="on" class="white--text">
-            조꼬삼
+            사용자123
           </v-btn>
         </template>
       </v-menu>
-    </v-app-bar>  
-    
+    </v-app-bar>
 
-    <v-navigation-drawer
-      v-model="drawer"
-      absolute
-      temporary
-    >
+    <v-navigation-drawer v-model="drawer" absolute temporary>
       <v-list-item>
         <v-list-item-avatar>
           <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
@@ -94,11 +89,7 @@
       <v-divider></v-divider>
 
       <v-list dense>
-        <v-list-item
-          v-for="item in items"
-          :key="item.title"
-          link
-        >
+        <v-list-item v-for="item in items" :key="item.title" link>
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -115,20 +106,18 @@
 <script>
 export default {
   data: () => ({
-      drawer: null,
-      searchText:'',
-       items: [
-          { title: 'Home', icon: 'mdi-view-dashboard' },
-          { title: 'About', icon: 'mdi-forum' },
-        ],
+    drawer: null,
+    searchText: "",
+    items: [
+      { title: "Home", icon: "mdi-view-dashboard" },
+      { title: "About", icon: "mdi-forum" },
+    ],
   }),
   methods: {
-    search(){
-      console.log(this.searchText+"검색~");
+    search() {
+      console.log(this.searchText + "검색~");
     },
   },
-
-}
+};
 </script>
-<style lang="scss">
-</style>
+<style lang="scss"></style>
