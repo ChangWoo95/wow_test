@@ -25,6 +25,11 @@ public class VideoServiceImpl implements VideoService {
     private final VideoRepository videoRepository;
 
     @Override
+    public String getSavedFileName(Long videoId) {
+        return videoRepository.searchSavedFileName(videoId);
+    }
+
+    @Override
     @Transactional
     public void uploadVideo(VideoRequest videoRequest) {
 
