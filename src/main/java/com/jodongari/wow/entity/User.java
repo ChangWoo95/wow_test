@@ -37,13 +37,13 @@ public class User extends BaseDateTime {
     @Column(nullable = true)
     private String userProfileImageURL;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
     private List<Video> uploadVideos = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
     private List<UserVideoHistory> userVideoHistories = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
     private List<Comment> comments = new ArrayList<>();
 
     @Builder

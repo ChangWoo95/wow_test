@@ -22,6 +22,9 @@ public class Video extends BaseDateTime {
     @Column(name = "VIDEO_TITLE", nullable = false, length = 100)
     private String title;
 
+    @Column(name = "VIDEO_DESCRIPTION", length = 500)
+    private String description;
+
     @Column(name = "VIDEO_FILE_NAME", nullable = false)
     private String fileName;
 
@@ -46,13 +49,14 @@ public class Video extends BaseDateTime {
     @Column(name = "VIDEO_RUNNING_TIME")
     private String runningTime;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "video")
     private List<Comment> comments = new ArrayList<>();
 
     @Builder
-    public Video(Long id, String title, String fileName, String savedFileName, Boolean deleteFlag, Long likeCount, Long disLikeCount, Long viewCount, Long size, String runningTime, List<Comment> comments) {
+    public Video(Long id, String title, String description, String fileName, String savedFileName, Boolean deleteFlag, Long likeCount, Long disLikeCount, Long viewCount, Long size, String runningTime, List<Comment> comments) {
         this.id = id;
         this.title = title;
+        this.description = description;
         this.fileName = fileName;
         this.savedFileName = savedFileName;
         this.deleteFlag = deleteFlag;
