@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 @Getter
 @Entity
+@Table(name = "USER_VIDEO_HISTORY")
 @NoArgsConstructor
 public class UserVideoHistory extends BaseDateTime {
 
