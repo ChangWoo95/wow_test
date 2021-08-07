@@ -5,6 +5,14 @@ plugins {
 	id 'java'
 }
 
+node {
+	version = '14.16.1'
+	npmVersion = '6.14.12'
+	workDir = file("./frontend")
+	npmWorkDir = file("./frontend")
+	nodeModulesDir = file("./frontend")
+}
+
 group = 'com.jodongari'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
@@ -49,6 +57,19 @@ compileQuerydsl {
 	options.annotationProcessorPath = configurations.querydsl
 }
 
+task setUp(type: NpmTask){
+	description = "Install Node.js packages"
+	args = ['install']
+	inputs.files file('package.json')
+	outputs.files file('node_monules')
+}
+
+task buildFrontEnd(type: NpmTask, dependsOn: setUp) {
+	description = "Build vue.js"
+	args = ['run', 'build']
+}
+
+processResources.dependsOn 'buildFrontEnd'
 
 test {
 	useJUnitPlatform()
