@@ -34,13 +34,19 @@ public class FileStoreService {
     public FileStoreService(
             @Value("${server.compression.ffmpeg}") String ffmpegPath,
             @Value("${server.compression.ffprobe}") String ffprobePath) throws IOException {
-        ffmpeg = new FFmpeg();
-        if (!StringUtils.isEmpty(ffmpegPath))
-            ffmpeg = new FFmpeg(ffmpegPath);
 
-        ffprobe = new FFprobe();
-        if (!StringUtils.isEmpty(ffprobePath))
-            ffprobe = new FFprobe(ffprobePath);
+        // Mac ver
+//        ffmpeg = new FFmpeg();
+//        if (!StringUtils.isEmpty(ffmpegPath))
+//            ffmpeg = new FFmpeg(ffmpegPath);
+//        ffprobe = new FFprobe();
+
+//        if (!StringUtils.isEmpty(ffprobePath))
+//            ffprobe = new FFprobe(ffprobePath);
+
+        // Window ver
+        ffmpeg = new FFmpeg("src/main/resources/ffmpeg/bin/ffmpeg");
+        ffprobe = new FFprobe("src/main/resources/ffmpeg/bin/ffprobe");
 
     }
 
