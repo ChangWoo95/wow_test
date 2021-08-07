@@ -38,12 +38,6 @@ public class User extends BaseDateTime {
     @Column(nullable = true)
     private String userProfileImageURL;
 
-<<<<<<< HEAD
-//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
-//    private List<Video> uploadVideos = new ArrayList<>();
-
-=======
->>>>>>> 32390fd8282c222fe50a49a9f0fdb1f31c4fbf03
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
     private List<UserVideoHistory> userVideoHistories = new ArrayList<>();
 
@@ -59,10 +53,6 @@ public class User extends BaseDateTime {
         this.birthday = birthday;
         this.lastLoggedInIp = lastLoggedInIp;
         this.userProfileImageURL = userProfileImageURL;
-<<<<<<< HEAD
-//        this.uploadVideos = uploadVideos;
-=======
->>>>>>> 32390fd8282c222fe50a49a9f0fdb1f31c4fbf03
         this.userVideoHistories = userVideoHistories;
         this.comments = comments;
     }
