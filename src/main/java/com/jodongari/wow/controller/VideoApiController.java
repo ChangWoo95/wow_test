@@ -35,7 +35,7 @@ public class VideoApiController {
                     MediaType.MULTIPART_FORM_DATA_VALUE,
                     MediaType.APPLICATION_OCTET_STREAM_VALUE}
     )
-    public ResponseEntity<?> createVideo(@RequestPart("content") MultipartFile file) {
+    public ResponseEntity<?> uploadVideo(@RequestPart("content") MultipartFile file) {
         try {
             String fileName = fileService.createFile(file, FileStoreService.TypeOfMedia.Videos);
             fileService.convertVideo(fileName, "mp4");
@@ -47,9 +47,9 @@ public class VideoApiController {
         }
     }
 
-
+    @CrossOrigin("*")
     @GetMapping("/video/streaming/{file}")
-    public void downloadVideo(HttpServletResponse response, @PathVariable String file) {
+    public void StreamVideo(HttpServletResponse response, @PathVariable String file) {
         try (FileInputStream fis = new FileInputStream("src/main/resources/video/" + file)) {
             IOUtils.copy(fis, response.getOutputStream());
         } catch (Exception e) {
