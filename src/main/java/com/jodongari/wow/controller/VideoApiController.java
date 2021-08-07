@@ -1,13 +1,16 @@
 package com.jodongari.wow.controller;
 
 import com.jodongari.wow.dto.request.VideoRequest;
+import com.jodongari.wow.service.FileStoreService;
 import com.jodongari.wow.service.VideoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.UrlResource;
 import org.springframework.core.io.support.ResourceRegion;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -20,6 +23,27 @@ public class VideoApiController {
 
     private final VideoService videoService;
     private final String FILE_LOCATION = "resources/video/";
+
+    @Autowired
+    private FileStoreService fileService;
+
+    @PostMapping(
+            value = "/upload/video",
+            consumes = {
+                    MediaType.MULTIPART_FORM_DATA_VALUE,
+                    MediaType.APPLICATION_OCTET_STREAM_VALUE}
+    )
+    public ResponseEntity<?> createVideo(@RequestPart("content") MultipartFile file) {
+        try {
+            String fileName = fileService.createFile(file, FileStoreService.TypeOfMedia.Videos);
+            fileService.convertVideo(fileName, "mp4");
+            System.out.println("Path : " + fileName);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @PostMapping("/video/upload")
     public ResponseEntity uploadVideo(@RequestBody VideoRequest videoRequest) {
