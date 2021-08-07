@@ -7,7 +7,7 @@
       <v-btn @click="upload" color="primary">Upload</v-btn>
       <div>
         <video id="videoPlayer" controls>
-          <source src=http://localhost:9090/api/download/test/jisu.mpd
+          <source src=http://localhost:9090/api/video/streaming/jisu.mpd
           type=application/dash+xml>
         </video>
       </div>
@@ -37,14 +37,5 @@ export default {
       console.log(res);
     },
   },
-  // mounted() {
-  //   // var url = "https://dash.akamaized.net/envivio/EnvivioDash3/manifest.mpd";
-  //   var url = "assets/video/jisu.mpd";
-  //   var player = dashjs.MediaPlayer().create();
-  //   console.log(player);
-  //   console.log(document.querySelector("#videoPlayer"));
-  //   player.initialize(document.querySelector("#videoPlayer"), url, true);
-  //   console.log("확인!!");
-  // },
 };
 </script>
