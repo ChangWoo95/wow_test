@@ -50,7 +50,7 @@ public class VideoApiController {
 
     @GetMapping("/video/streaming/{file}")
     public void downloadVideo(HttpServletResponse response, @PathVariable String file) {
-        try (FileInputStream fis = new FileInputStream("src/main/resources/static/video/" + file)) {
+        try (FileInputStream fis = new FileInputStream("src/main/resources/video/" + file)) {
             IOUtils.copy(fis, response.getOutputStream());
         } catch (Exception e) {
             log.error("file Download Error - path : {}");
