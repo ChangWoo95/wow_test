@@ -11,6 +11,7 @@ import java.util.List;
 
 @Getter
 @Entity
+@Table(name = "USER")
 @NoArgsConstructor
 public class User extends BaseDateTime {
 
@@ -37,9 +38,12 @@ public class User extends BaseDateTime {
     @Column(nullable = true)
     private String userProfileImageURL;
 
+<<<<<<< HEAD
 //    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
 //    private List<Video> uploadVideos = new ArrayList<>();
 
+=======
+>>>>>>> 32390fd8282c222fe50a49a9f0fdb1f31c4fbf03
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
     private List<UserVideoHistory> userVideoHistories = new ArrayList<>();
 
@@ -47,7 +51,7 @@ public class User extends BaseDateTime {
     private List<Comment> comments = new ArrayList<>();
 
     @Builder
-    public User(Long id, String email, String nickName, String gender, Date birthday, String lastLoggedInIp, String userProfileImageURL, List<Video> uploadVideos, List<UserVideoHistory> userVideoHistories, List<Comment> comments) {
+    public User(Long id, String email, String nickName, String gender, Date birthday, String lastLoggedInIp, String userProfileImageURL, List<UserVideoHistory> userVideoHistories, List<Comment> comments) {
         this.id = id;
         this.email = email;
         this.nickName = nickName;
@@ -55,7 +59,10 @@ public class User extends BaseDateTime {
         this.birthday = birthday;
         this.lastLoggedInIp = lastLoggedInIp;
         this.userProfileImageURL = userProfileImageURL;
+<<<<<<< HEAD
 //        this.uploadVideos = uploadVideos;
+=======
+>>>>>>> 32390fd8282c222fe50a49a9f0fdb1f31c4fbf03
         this.userVideoHistories = userVideoHistories;
         this.comments = comments;
     }
