@@ -4,6 +4,15 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+/frontend/npm-v6.14.12/**
+/src/main/resources/static/css/**
+/src/main/resources/static/img/**
+/src/main/resources/static/js/**
+/src/main/resources/static/favicon.ico
+/src/main/resources/static/index.html
+/src/main/resources/video/**
+/src/main/resources/ffmpeg/**
+
 
 ### STS ###
 .apt_generated

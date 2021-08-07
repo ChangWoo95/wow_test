@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table
+@Table(name = "COMMENT")
 public class Comment extends BaseDateTime {
 
     @Id

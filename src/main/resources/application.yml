@@ -3,9 +3,22 @@ spring:
     console:
       enabled: true
       path: /h2-console
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 200MB
+      max-request-size: 200MB
 
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
     username: sa
     password:
+
+server:
+  compression:
+    min-response-size: 2KB
+    enabled: true
+    mime-types: image/jpeg, image/gif, image/png, video/mp4, video/mpeg, video/mpeg4-generic, application/octet-stream
+    ffmpeg: ${FFMPEG_PATH:ffmpeg}
+    ffprobe: ${FFPROBE_PATH:ffprobe}
